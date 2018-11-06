@@ -28,7 +28,7 @@
 #else
 #include "WProgram.h"
 #endif
-
+/*
 #if defined (__SAM3X8E__) || (ARDUINO_ARCH_SAMD)
     typedef volatile RwReg PortReg;
     typedef uint32_t PortMask;
@@ -39,6 +39,18 @@
 #else
     typedef volatile uint8_t PortReg;
     typedef uint8_t PortMask;
+#endif
+*/
+
+#ifdef __SAM3X8E__
+   typedef volatile RwReg PortReg;
+   typedef uint32_t PortMask;
+ADD>#elif defined (ESP32)
+ADD>   typedef volatile uint32_t PortReg;
+ADD>   typedef uint32_t PortMask;
+#else
+   typedef volatile uint8_t PortReg;
+   typedef uint8_t PortMask;
 #endif
 
 // Select one of these defines to set the pixel color order
